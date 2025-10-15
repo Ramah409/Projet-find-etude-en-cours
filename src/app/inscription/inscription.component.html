@@ -1,0 +1,61 @@
+<section>
+    <h2>Inscription</h2>
+
+    <!--affichage des blog si l'expression est vrai-->
+    <!--si c'est vrai on affiche ca -->
+    @if (error){
+        <p style="color: red;"> {{ error}} </p>
+    }
+    <!--en cas de succés -->
+    @if (success){
+        <p style="color: rgb(15, 225, 92);"> {{ success }} </p>
+    }
+
+    <!--listes des erreures 422 champ par champ-->
+    @if (erreursChamps.length){
+        <ul style="color: rgb(196, 20, 167); margin: .5rem 0 1rem;">
+            @for (listedeserreur of erreursChamps; track $index){
+                <li> <strong> {{ listedeserreur.field }} </strong> </li>
+            }
+        </ul>
+    }
+    <!--mon partie formulaire-->
+    <!--qaund on valide le formulaire Angular appelle onSubmit() dans mon .ts -->
+    <form (ngSubmit)="onSubmit()">
+
+        <!--nom de l'utilisateur -->
+        <label>
+            Nom complet
+            <input [(ngModel)]="name" name="name" required />
+        </label>
+
+        <!--email-->
+        <label>
+            E-mail
+            <input type="email" [(ngModel)]="email" name="email" required />
+        </label>
+
+        <!--nom d'utilisateur-->
+        <label>
+            Nom d'utilisateur
+            <input [(ngModel)]="username" name="username" required />
+        </label>
+
+        <!--mot de passe-->
+        <label>
+            Crée un mot de passe
+            <!--pour masquer la saisie du mot de passe j'utilise type...-->
+            <input type="password" [(ngModel)]="password" name="password" required="">
+        </label>
+
+        <label>
+            Confirmer le mot de passe
+            <input type="password" [(ngModel)]="password2" name="password2" required />
+        </label>
+
+        <!--Button -->
+        <button type="submit"> Crée mon compte </button>
+
+
+    </form>
+</section>

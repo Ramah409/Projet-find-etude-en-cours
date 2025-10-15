@@ -1,0 +1,64 @@
+<section style="padding: 16px;">
+    <header>
+        <h2>Tableau de bord Administrateur</h2>
+        <!--lien pour un retour-->
+        <a routerLink="/connexion"> Aller à la page de connexion </a>
+    </header>
+
+    <!--ma barre de recherche-->
+    <input [(ngModel)]="query" placeholder="Recherche un utilisateur" style="margin:10px 0; width: 100%; max-width: 480px;"/>
+
+    <!--Tableau des utilisateurs-->
+    <!--pour vérifier si il y'a un utilisateur je utiliser @if vue que c'est une condition-->
+    @if (filtered().length > 0){
+        <!--Tableau des utilisateur-->
+        <table border="1" cellpadding="6" cellspacing="0" style="width:100%; border-collapse:collapse;">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Pseudo</th>
+                    <th>Crée le </th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--je fais un boucle @for pour la liste des utilisateur -->
+                @for (liste of filtered(); track liste.id) {
+                    <tr>
+                        <!--pour afficher les propriété des utilisateur-->
+                        <td> {{liste.id}} </td>
+                        <td> {{liste.name}} </td>
+                        <td> {{liste.email}} </td>
+                        <td> {{liste.username}} </td>
+                        <!--peut être null-->
+                        <td> {{liste.createdAt || '—' }} </td>
+
+                        <!--je fais appel au boutton onDelete dans partie ts-->
+                        <td>
+                            <button (click)="onDelete(liste.id!)">Supprimer</button>
+                        </td>
+
+
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+
+        <!--si aucun utilisateur trv la base sera vide et ce texte sera afficher-->
+
+    } @else {
+        <p> Aucun utilisateur trouvé</p>
+    }
+    <!--affichage des messages qui serons definie dans la partie ts-->
+    @if (error) {
+        <!--en cas d'erreur l'utilisateur ne sera pas supprimer-->
+        <p style="color: brown;"> {{ error }} </p>
+    }
+    <!--en cas de succes -->
+    @if (success){
+        <p style="color: limegreen;"> {{success}} </p>
+    }
+</section>

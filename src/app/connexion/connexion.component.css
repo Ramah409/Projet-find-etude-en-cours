@@ -1,0 +1,86 @@
+:host{
+  display: block;                        
+  min-height: 100vh;                       
+  background-color: #dff1cf;               
+  background-image: url('/fond-d-image-1.png'); 
+  background-position: center top;  
+  background-size: 420px auto;
+
+}
+.my-section {
+  width:50%;                          
+  max-width:435px; 
+  text-align: center;         
+  margin: 0 auto;          
+  padding:60px;                       
+  background:rgb(162, 210, 176);      
+  border-radius:30px;                  
+  box-shadow:0 10px 28px rgba(166, 215, 172, 0.99);
+ 
+}
+h2 {
+    margin: 0 0 20px;
+    color: #21261c;
+}
+form {
+    /* espace entre les champs */
+    margin-top: 50px;
+    padding: 45px;
+}
+/* concernant chaque label */ 
+form > label{
+ /* pour chaque label sur sa propre ligne */
+  display:block;       
+  /* espace entre les champs */                 
+  margin:16px 0;                        
+  color:#0a150a;                     
+  font-size:16px;                     
+}
+.input, select {
+    margin-top: 25px;
+    border-radius: 20px;
+    box-shadow: 0 6px 16px rgba(0,0,0,.15);
+   
+}
+/* === 5) Inputs & select : style “pilule” + ombre === */
+input, select{
+  display:block;                        
+  width:100%;                           /* pleine largeur */
+  height:43px;                          /* hauteur confortable */
+  margin-top:25px;                       /* espace entre texte du label et le champ */
+  padding:0 20px 0 0px;                /* place pour l’icône à gauche */
+  border:none;                          /* pas de bord par défaut */
+  outline:none;                         /* on gère le focus ci-dessous */
+  border-radius:50px;                 
+  background:#fff; 
+  /* ombre légère */                    
+  box-shadow:0 6px 16px rgba(0,0,0,.15);
+  font-size:15px;                       /* taille texte champ */
+  color:#222;                           /* texte foncé */
+}
+
+/* === 7) Bouton principal */
+button[type="submit"]{
+  display:block;                        /* permet margin auto horizontal */
+  width:220px;                          /* largeur du bouton */
+  height:48px;                          /* hauteur */
+  margin:20px auto 4px;                 /* centre + espace au-dessus */
+  border:none;                          /* pas de bord */
+  border-radius:999px;                  /* pilule */
+  background:#fff;                      /* blanc comme sur ta maquette */
+  color:#2b2b2b;                        /* texte gris foncé */
+  font-weight:600;                      /* semi-gras */
+  box-shadow:0 10px 22px rgba(0,0,0,.18);/* ombre */
+  cursor:pointer;                       /* main au survol */
+  transition:transform .15s ease, box-shadow .15s ease; /* animations */
+}
+button[type="submit"]:hover{
+  transform:translateY(-1px);           
+  box-shadow:0 14px 26px rgba(0,0,0,.22);
+}
+button[type="submit"]:active{
+  transform:translateY(20);
+  box-shadow:0 8px 18px rgba(0,0,0,.18);
+}
+
+

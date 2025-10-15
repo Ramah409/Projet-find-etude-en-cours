@@ -1,0 +1,25 @@
+<section>
+    <h2>Mon espace personnel </h2>
+    <!--vue que ce une condition pour afficher les info j'utilise if-->
+    @if (user) {
+        <!--pour afficher les infos-->
+        <div style="display:flex; flex-direction:column; gap:8px; margin-top:12px;">
+            <p><strong>Email :</strong> {{user.email}} </p>
+            <p><strong>Rôle :</strong> {{ user.role}} </p>
+        </div>
+
+        <!--boutton de deconnection cette partie sera gerer par mon ts-->
+        <div style="margin-top:16px;">
+            <button (click)="logout()"> Se déconnecter </button>
+        </div>
+
+        <div style="margin-top: 12px; display: flex; gap:10px;">
+            <a routerLink="/produits">Retour a la boutique </a>
+        </div>
+    } @else {
+        <!--si user est null on met un message plus un lien vers login-->
+        <p> Vous n'êtes pas connecté(e)</p>
+        <a routerLink="/login">Aller à la page de connexion </a>
+    
+    }
+</section>

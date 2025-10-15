@@ -1,0 +1,46 @@
+
+<header>
+  <h2>Nos Produits</h2>
+  <a routerLink="/profil" aria-label="Mon profil" title="Mon profil"
+     class="icon-btn"
+     style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;text-decoration:none;">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2"/>
+      <path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </a>
+</header>
+
+
+
+<!--pour la barre de recherche de produits -->
+<!--Chaque frappe met à jour query, qui est utilisée par filtered()-->
+<input placeholder="Rechercher" [(ngModel)]="query" style="margin: 12px 0; width: 100%; max-width: 420px;"/>
+
+<!--boucle d'affichage des produits filtrés -->
+@for (produits of filtered(); track produits.id){
+    <!--les produits-->
+    <article>
+        <img [src]="produits.imageUrl" [alt]="produits.name" width="90" height="90" />
+
+        <!--nom du produits-->
+        <h3 style="opacity:.8; margin:0 0 6px;"> {{produits.name}} </h3>
+
+        <!--description du produits-->
+        <p style="opacity:.8; margin:0 0 6px;"> {{produits.description}} </p>
+
+        <!--pour le prix je l'ai formaté en euro avec le pipe genre currency-->
+        <div style="font-weight:bold; margin-bottom:8px;"> {{produits.price | currency:'EUR'}} </div>
+
+        <!--boutton pour ajouter dans le panier-->
+        <button (click)="addToCart(produits)"> Ajouter au panier</button>
+    </article>
+  
+}
+  <!--message qui sera afficher si un utilisateur ajoute un produit au panier-->
+  @if (flash){
+    <p style="margin-top: 12px; color: blueviolet;"> {{ flash}} </p>
+  }
+  <br>
+  <br>
+  <button (click)="logout()"> Se déconnecter</button>
