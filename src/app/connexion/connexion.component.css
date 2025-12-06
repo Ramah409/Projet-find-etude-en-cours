@@ -5,6 +5,7 @@
   background-image: url('/fond-d-image-1.png'); 
   background-position: center top;  
   background-size: 420px auto;
+  padding-top:85px;
 
 }
 .my-section {
@@ -12,10 +13,11 @@
   max-width:435px; 
   text-align: center;         
   margin: 0 auto;          
-  padding:60px;                       
+  padding:60px;                      
   background:rgb(162, 210, 176);      
   border-radius:30px;                  
   box-shadow:0 10px 28px rgba(166, 215, 172, 0.99);
+  
  
 }
 h2 {
@@ -25,40 +27,38 @@ h2 {
 form {
     /* espace entre les champs */
     margin-top: 50px;
-    padding: 45px;
+    padding: 10px;
 }
-/* concernant chaque label */ 
-form > label{
- /* pour chaque label sur sa propre ligne */
-  display:block;       
-  /* espace entre les champs */                 
-  margin:16px 0;                        
-  color:#0a150a;                     
-  font-size:16px;                     
-}
+/* Empile proprement les champs */
+.my-section form {
+   display: flex; 
+   flex-direction: column; 
+   gap: 16px; 
+  }
+
 .input, select {
     margin-top: 25px;
     border-radius: 20px;
+    padding: 26px;  
     box-shadow: 0 6px 16px rgba(0,0,0,.15);
    
 }
 /* === 5) Inputs & select : style “pilule” + ombre === */
-input, select{
-  display:block;                        
-  width:100%;                           /* pleine largeur */
-  height:43px;                          /* hauteur confortable */
-  margin-top:25px;                       /* espace entre texte du label et le champ */
-  padding:0 20px 0 0px;                /* place pour l’icône à gauche */
-  border:none;                          /* pas de bord par défaut */
-  outline:none;                         /* on gère le focus ci-dessous */
-  border-radius:50px;                 
-  background:#fff; 
-  /* ombre légère */                    
+.my-section input,
+.my-section select{
+  display:block;
+  width:100%;
+  height:56px;                 /* même hauteur pour tous */
+  padding:12px 24px;           /* même padding */
+  box-sizing:border-box;       /* évite que le padding casse l'alignement */
+  border:none;
+  outline:none;
+  border-radius:50px;
+  background:#fff;
   box-shadow:0 6px 16px rgba(0,0,0,.15);
-  font-size:15px;                       /* taille texte champ */
-  color:#222;                           /* texte foncé */
+  font-size:16px;
+  color:#222;
 }
-
 /* === 7) Bouton principal */
 button[type="submit"]{
   display:block;                        /* permet margin auto horizontal */

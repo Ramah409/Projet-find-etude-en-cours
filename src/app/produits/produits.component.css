@@ -1,0 +1,133 @@
+/* ===== page ===== */
+:host{                                 
+  display:grid;                       
+  grid-template-columns: repeat(2, minmax(220px, 1fr)); 
+  gap: 28px 64px;                   
+  justify-content:center;              
+  padding: 12px 18px 40px;             
+  min-height:100vh;                      
+  box-sizing:border-box;                 
+  background-size:420px auto;     
+  background-color:#e5ffed ;     
+}
+
+header{                                 
+  grid-column: 1 / -1;                  
+  position:relative;                    
+  margin:0 auto;                    
+  width:100%;            
+  padding:6px 1px 2px;              
+  border-radius:16px;                    
+  text-align:center;                   
+  background:linear-gradient(135deg,#66d26f 0%, #43b35a 60%, #33a052 100%); 
+  box-shadow:0 10px 24px rgba(0,0,0,.18);
+}
+header h2{                              
+  margin:2px 0 0;                      
+  color:#1a2c1a;                         
+  font-size:30px;                       
+  font-weight:700;                      
+  text-shadow:0 1px 0 rgba(255,255,255,.35); 
+}
+ /* panier et  profil  */
+.profil-btn, .panier-btn {                              
+  color:#0f1a0f;
+  background:#fff; 
+  box-shadow:0 6px 18px rgba(0,0,0,.16);
+  padding: 5px;
+  margin-right: 50px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  text-decoration:none;
+  background:#fff;
+  box-shadow:0 6px 18px rgba(0,0,0,.16);color:#0f1a0f;
+}
+/* sous-titre + recherche */
+header + p,header + *:not(input){ 
+  grid-column:1/-1; 
+} 
+
+/* pour mon button de recherche */
+input[placeholder="Rechercher"]{         
+  grid-column: 1 / -1;                  
+  justify-self:center;                  
+  width:100%;           
+  height:50px;                          
+  padding:10px 16px 10px 44px;           
+  border:none; outline:none;             
+  border-radius:999px;                  
+  background:#ffffff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E")
+    14px center / 18px 18px no-repeat;
+  box-shadow:0 0 0 3px rgba(69, 255, 94, 0.25), 0 8px 20px rgba(0,0,0,.12); 
+  font-size:16px; box-sizing:border-box; 
+}
+
+/* cartes produit */
+article{                                 
+  display:flex;                           
+  flex-direction:column;                 
+  align-items:center;                     
+  gap:12px;                              
+  margin:0;                               
+  padding:14px 16px;                      
+  border-radius:16px;                    
+  background:#ffffffcc;                  
+  backdrop-filter:blur(2px);             
+  box-shadow:0 10px 24px rgba(0, 0, 0, 0.14); 
+}
+article img{                              
+  width:150px; height:150px;              
+  object-fit:cover;                       
+  border-radius:6px;                     
+  box-shadow:0 6px 16px rgba(0,0,0,.12);  
+}
+ /* titre du produits */
+article h3{ margin:0 0 6px; opacity:.8; font-size:18px; color:#0f1a0f; }
+ /* description */
+article p { margin:0 0 6px; opacity:.8; font-size:14px; }   
+/* prix */           
+article div{ margin-bottom:8px; font-weight:bold; }                     
+
+/* boutons (Ajouter / supprimer)*/
+article button{                          
+  min-width:160px; height:36px;           
+  border:none; outline:none;           
+  border-radius:999px;                   
+  background:#d996cf; color:#2b2b2b;        
+  font-weight:600;                       
+  box-shadow:0 8px 20px rgba(0,0,0,.14);  
+  cursor:pointer;                         
+}
+/* deconnecter */ 
+.deconnect {        
+  border:none; outline:none;             
+  border-radius:999px;                    
+  background:#ce6a78; color:#2b2b2b;        
+  font-weight:600;                       
+  box-shadow:0 8px 20px rgba(0,0,0,.14);  
+  cursor:pointer; 
+  grid-column: 1 / -1;     
+  justify-self: center;   
+  padding: 10px 20px; 
+  
+}
+/* bouton "supprimer" */
+article button + button{                  
+  margin-top:10px;                       
+  background:#f7f1f1;                     
+}
+article button:hover{ 
+  transform:translateY(-1px); 
+}
+
+/*(message flash, bouton bas) */
+p[style*="blueviolet"],                  
+button[ng-reflect-router-link],          
+button:has(+ br + br){                   
+  grid-column:1 / -1;                   
+  justify-self:center;              
+}

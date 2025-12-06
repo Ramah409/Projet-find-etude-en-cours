@@ -6,6 +6,11 @@ import { UserApiService } from '../user-api.service';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+
+
 
 @Component({
   selector: 'app-admin',
@@ -13,6 +18,11 @@ import { CommonModule } from '@angular/common';
     RouterModule,
     FormsModule,
     CommonModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+   
+
   ],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css'

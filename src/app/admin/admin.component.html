@@ -1,12 +1,22 @@
 <section style="padding: 16px;">
     <header>
         <h2>Tableau de bord Administrateur</h2>
+        <p style="text-align: center;">Le but n’est pas la censure, mais la prévention rester strictement dans le cadre légal et le rappel d’un usage mesuré.</p>
         <!--lien pour un retour-->
-        <a routerLink="/connexion"> Aller à la page de connexion </a>
+        <a routerLink="/connexion"> Se déconnecté</a>
+
+         <a routerLink="/profil" aria-label="Mon profil" title="Mon profil" class="profil-btn">
+         <mat-icon class="material-symbols-outlined" style="font-size:22px;line-height:1;">
+    person
+  </mat-icon>
+</a>
     </header>
 
-    <!--ma barre de recherche-->
-    <input [(ngModel)]="query" placeholder="Recherche un utilisateur" style="margin:10px 0; width: 100%; max-width: 480px;"/>
+    <!--pour la barre de recherche de produits -->
+
+    <!--pour la barre de recherche de produits -->
+<!--Chaque frappe met à jour query, qui est utilisée par filtered()-->
+<input placeholder="Rechercher" [(ngModel)]="query" style="margin: 12px 0; max-width: 820px; margin: 20px; "/>
 
     <!--Tableau des utilisateurs-->
     <!--pour vérifier si il y'a un utilisateur je utiliser @if vue que c'est une condition-->
@@ -19,7 +29,7 @@
                     <th>Nom</th>
                     <th>Email</th>
                     <th>Pseudo</th>
-                    <th>Crée le </th>
+                    <th>Crée </th>
                     <th>Action</th>
                 </tr>
             </thead>

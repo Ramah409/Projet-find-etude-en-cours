@@ -1,0 +1,256 @@
+
+:host{
+  display:block;
+  min-height:100vh;
+  background-color: rgb(228, 236, 228);
+  padding: clamp(12px, 2vw, 24px);
+  box-sizing: border-box;
+  color: black;
+}
+
+header{
+  max-width: 960px;
+  margin: 0 auto clamp(16px, 3vw, 24px);
+  padding: 16px 20px;
+  border-radius: 20px;
+  background-color: rgb(180, 233, 200);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid rgba(0,0,0,.04);
+  backdrop-filter: saturate(125%) blur(4px);
+}
+
+header h1{
+  margin: 0;
+  letter-spacing: .2px;
+  font-weight: 800;
+  color: black;
+}
+
+/* btn de retour */
+.retour{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: rgb(2, 19, 8);
+  border: 1px solid rgba(0,0,0,.06);
+  padding: 10px 14px;
+  border-radius: 999px;
+  transition: transform .15s ease, box-shadow .15s ease, border-color .2s ease;
+}
+ /* petit “lift” au survol */
+.retour:hover{
+  transform: translateY(-1px);
+}
+
+/* taille de l’icône */
+.retour mat-icon{
+  font-size:25px;
+  line-height:1;
+}
+
+/* si le panier est vide */ 
+.panier-vide{
+  max-width: 960px;
+  margin: 18px auto;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #ecf0ec;
+  border: 1px solid rgba(0,0,0,.06);
+  color: rgb(24, 34, 24);
+
+}
+
+.liste{
+  max-width: 960px;
+  margin: 0 auto;
+  display: grid;
+  gap: 20px;
+}
+/* image ,infos, cœur, quantité, total/retirer */
+.carteligne{
+  position: relative;
+  display: grid;
+  grid-template-columns: 72px 1fr auto auto auto;
+  align-items: center;
+  gap: 30px;
+  background-color: rgb(235, 240, 236);
+  border: 1px solid rgba(0,0,0,.06);
+  padding: 15px 26px;
+ 
+}
+.retirer {
+  width: 100px;
+}
+
+.carteligne img{
+  width: 72px;
+  height: 72px;
+  border-radius: 10px;
+  /* remplit sans déformer */
+  object-fit: cover;
+  box-shadow: 0 8px 18px rgba(0,0,0,.10);
+}
+
+.infoproduits h3{
+  margin: 0 0 px;
+  font-size: 20px;
+  color: rgb(20, 28, 22);
+  font-weight: 700;
+
+}
+
+.infoproduits .prix{
+  font-weight: 700;
+  color: rgb(20, 31, 22);
+}
+
+.coeur{
+  background: #efefef;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,.06);
+  transition: transform .12s ease, box-shadow .15s ease;
+}
+
+.coeur:hover{
+  transform: translateY(-1px);
+}
+
+.quantite{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+  /*  boutons +/- */
+.quantite .moins,.quantite .ajouter{
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .15s ease, border-color .2s ease;
+}
+
+.quantite .moins:hover, .quantite .ajouter:hover{
+  transform: translateY(-1px);
+}
+
+.quantite .nombre{
+  min-width: 36px;
+  text-align: center;
+  font-weight: 800;
+  color: rgb(17, 20, 17);
+ 
+}
+
+.sous-total{
+  font-weight: 800;
+  color: rgb(19, 36, 23);
+}
+
+.retirer{
+  border: 1px solid rgba(0,0,0,.06);
+  background: #f4f5f6;
+  color: brown;
+  padding: 10px 12px 20px;
+  border-radius: 99px;
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .15s ease, background .2s ease;
+  /* transitions fluides */
+}
+
+
+.retirer:hover{
+  transform: translateY(-1px);
+  background:#eceef0;
+
+}
+
+/* libellé | valeur | bouton */
+.total-zone{
+  max-width: 960px;
+  margin: 16px auto 0;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  padding: 14px 16px;
+  border: 1px solid rgba(0,0,0,.06);
+ 
+}
+
+.total-libelle{
+  font-weight: 700;
+  color: rgb(17, 28, 18);
+}
+
+.total-valeur{
+  font-weight: 900;
+  font-size: 18px;
+  padding: 20px;
+}
+
+.confirmer{
+  border: 1px solid rgba(0,0,0,.06);
+  background-color: rgb(30, 115, 30);
+  color: white;
+  font-size: 16px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .15s ease, filter .2s ease;
+}
+
+.confirmer:hover{
+  transform: translateY(-1px);
+}
+
+@media (max-width: 640px){
+   /* header plus compact sur mobile */
+  header{
+    padding: 14px 16px;
+   
+  }
+  /* 3 colonnes sur mobile */
+  .carteligne{
+    grid-template-columns: 56px 1fr auto;
+    grid-auto-rows: auto;
+    row-gap: 10px;
+    padding: 12px;
+  }
+ /* vignette plus petite */
+  .carteligne img{
+    width:56px;
+    height:56px;
+  }
+  /* aligné à droite dans la grille */
+  .coeur{
+    position: static;
+    justify-self: end;
+  }
+ /* quantité à gauche */
+  .quantite{
+    justify-self: start;
+  }
+ /* sous-total à droite */
+  .sous-total{
+    justify-self: end;
+  }
+
+  /* total et bouton sur 2 lignes */
+  .total-zone{
+    grid-template-columns: 1fr auto;
+    row-gap: 20px;
+  }
+}
+
+/* supprime les animations pour confort utilisateur */
+@media (prefers-reduced-motion: reduce){
+  *{
+    transition: none !important;
+    
+  }
+}

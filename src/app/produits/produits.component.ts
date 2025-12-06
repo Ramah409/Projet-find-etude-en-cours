@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Product } from '../product.model';
 import { ProductService } from '../product.service';
-import { AuthService } from '../auth.service';
 import { CurrencyPipe } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @Component({
@@ -14,7 +14,8 @@ import { RouterLink } from '@angular/router';
   imports: [
     FormsModule,
     CurrencyPipe,
-    RouterLink
+    RouterLink,
+    MatIconModule
 ],
   templateUrl: './produits.component.html',
   styleUrl: './produits.component.css'
@@ -58,15 +59,18 @@ export class ProduitsComponent implements OnInit{
     return this.products.filter(produits => (produits.name + ' ' + produits.description).toLowerCase().includes(q));
   }
 
-  // pour ajouter un produits dans le panier
+  // pour ajouter un produits  dans le panier
   addToCart(produits: Product){
-    // message de confirmation
-    this.flash = `« ${produits.name} » ajouté au panier.`;
-    // le message sera disparait au bout d quelques seconde
-    setTimeout(() => (this.flash = ''), 1400);
-
+    const courant: Product[] = JSON.parse(localStorage.getItem('panier') || '[]');
+    // pour ajouter le produit
+    courant.push(produits);
+    // pour sauvegarder
+    localStorage.setItem('panier', JSON.stringify(courant));
+    // message qui sera afficher
+    this.flash = `« ${produits.name} » Ajouté au panier.`; 
+    // au bout de quelques seconde sera effacé
+    setTimeout(() => (this.flash = ''), 5000);
   }
-
   // pour se déconnecter facilement
   logout(){
     localStorage.removeItem('demoViewRole');

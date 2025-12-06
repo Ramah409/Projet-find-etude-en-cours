@@ -1,5 +1,13 @@
-<section>
-    <h2>Mon espace personnel </h2>
+<header>
+    <h2>Mon espace personnel  </h2>
+</header>
+<br>
+<br>
+
+
+<section class="my-section">
+   <!--profil avatar-->
+  <div class="avatar" aria-hidden="true"></div>
     <!--vue que ce une condition pour afficher les info j'utilise if-->
     @if (user) {
         <!--pour afficher les infos-->
@@ -8,18 +16,19 @@
             <p><strong>Rôle :</strong> {{ user.role}} </p>
         </div>
 
+
         <!--boutton de deconnection cette partie sera gerer par mon ts-->
-        <div style="margin-top:16px;">
+        <div style="margin-top:16px;" class="button">
             <button (click)="logout()"> Se déconnecter </button>
         </div>
 
-        <div style="margin-top: 12px; display: flex; gap:10px;">
-            <a routerLink="/produits">Retour a la boutique </a>
+        <div style="margin-top: 12px; display: flex; gap:10px; ">
+            <a routerLink="/produits" style="text-decoration: none;">Retour a la boutique </a>
         </div>
     } @else {
         <!--si user est null on met un message plus un lien vers login-->
         <p> Vous n'êtes pas connecté(e)</p>
-        <a routerLink="/login">Aller à la page de connexion </a>
+        <a routerLink="/connexion" style="text-decoration: none;">Aller à la page de connexion </a>
     
     }
 </section>

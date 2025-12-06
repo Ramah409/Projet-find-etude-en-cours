@@ -1,0 +1,68 @@
+<!--mon titre principale-->
+<header>
+    <h1> Panier </h1>
+    <!--lien de retour-->
+<a routerLink="/produits" class="retour" aria-label="Retour a la boutique" title="Retour a la boutique">
+  <mat-icon>arrow_back</mat-icon>
+  <span>Retour a la boutique</span>
+</a>
+</header>
+
+<!--si le panier est vide-->
+@if (!panier.length){
+    <!--message qui sera afficher-->
+    <p class="panier-vide">Votre panier est vide</p>
+}
+
+<!--si le panier est remplie-->
+@if (panier.length){
+    <!--la liste des lignes-->
+    <section class="liste">
+        @for (ligne of panier; track ligne.produits.id){
+            <article class="carteligne">
+                <!--images des produits-->
+                <img [src]="ligne.produits.imageUrl" [alt]="ligne.produits.name" width="64" height="64" />
+                <!---info sur le produits genre prix description-->
+                <div class="infoproduits">
+                    <h3> {{ ligne.produits.name }} </h3>
+                    <div class="prix">{{ ligne.produits.price | currency: 'EUR' }}</div>
+                </div>
+
+                <!--boutton pour liker-->
+               <button mat-icon-button class="coeur"
+                (click)="toggleLike(ligne.produits)"
+                [attr.aria-pressed]="isLiked(ligne.produits)"
+                [title]="isLiked(ligne.produits) ? 'Je n’aime plus' : 'J’aime'">
+          <mat-icon [color]="isLiked(ligne.produits) ? 'warn' : undefined">
+            {{ isLiked(ligne.produits) ? 'favorite' : 'favorite_border' }}
+          </mat-icon>
+
+                </button>
+
+                <!--quantité -->
+                <div class="quantite">
+                    <button class="moins" (click)="removeOne(ligne.produits)">-</button>
+                    <!--nombre-->
+                    <span class="nombre">{{ ligne.quantite}}</span>
+                    <button class="ajouter" (click)="add(ligne.produits)">+</button>
+                </div>
+                <!--le total-->
+                <div class="sous-total">
+                    {{ (ligne.produits.price * ligne.quantite )| currency:'EUR'}}
+                </div>
+
+                <!--retirer-->
+                <button class="retirer" (click)="removeAll(ligne.produits)">supprimer</button>
+            </article>
+        }
+    </section>
+    <!--total des articles-->
+    <footer class="total-zone">
+        <div class="total-libelle">Total</div>
+        <div class="total-valeur"> {{ total | currency:'EUR'}} </div>
+        <!--pour vider le panier-->
+        <button class="confirmer" (click)="confirm()"> Confirmer la commande</button>
+    </footer>
+}
+
+

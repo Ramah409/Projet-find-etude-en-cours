@@ -12,6 +12,7 @@ export class ProfilComponent {
   user: { email: string; role: string; } | null;
 
 
+  
   // pour pouvoir lire l’utilisateur courant et se déconnecter.
   constructor(private auth: AuthService){
      this.user = this.auth.getUser();
