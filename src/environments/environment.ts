@@ -1,5 +1,5 @@
 // Il sert à centraliser les URLs et réglages 
-export const environmrnt = {
+export const environment = {
 
     production: false,
 
