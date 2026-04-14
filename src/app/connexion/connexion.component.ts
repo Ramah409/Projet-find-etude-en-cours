@@ -4,9 +4,9 @@ import { AuthService } from '../auth.service';
 import { FormsModule } from '@angular/forms';
 import { UserApiService } from '../user-api.service';
 
-
+// ce bloc est comme la carte d'identé de mon composant y'a tt les infos
 @Component({
-  selector: 'app-connexion',
+  selector: 'app-connexion', // nom d ma balise 
   standalone: true,
   templateUrl: './connexion.component.html',
   styleUrls: ['./connexion.component.css'],
@@ -14,6 +14,7 @@ import { UserApiService } from '../user-api.service';
 })
 export class ConnexionComponent implements OnInit {
   // pour saisi les informations ici on peut mettre soit email ou username 
+  // mes variables 
   identifier: string = '';                 
   password: string = ''; 
  
@@ -25,10 +26,14 @@ export class ConnexionComponent implements OnInit {
   error = '';
   success = '';
 
+ 
   constructor(
-    private auth: AuthService,
+    // pour avoir accés a mon service 
+    private auth: AuthService, 
+    // pour etre en contact avec mon backend
     private api: UserApiService,
     private router: Router, 
+    // pour lire les paramettre de l'URL
     private route: ActivatedRoute
   ) {}
 
@@ -77,7 +82,7 @@ export class ConnexionComponent implements OnInit {
          localStorage.setItem('token', token);            
          }
 
-        // 🎫 role retourné par le bakend
+        // role retourné par le bakend
         let effectiveRole: 'ADMIN' | 'USER' = this.role;
         if (resp?.role === 'ADMIN' || resp?.role === 'USER'){
           effectiveRole = resp.role;

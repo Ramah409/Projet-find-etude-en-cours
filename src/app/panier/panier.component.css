@@ -2,7 +2,7 @@
 :host{
   display:block;
   min-height:100vh;
-  background-color: rgb(228, 236, 228);
+  background-color: #e4ece4;
   padding: clamp(12px, 2vw, 24px);
   box-sizing: border-box;
   color: black;
@@ -13,7 +13,7 @@ header{
   margin: 0 auto clamp(16px, 3vw, 24px);
   padding: 16px 20px;
   border-radius: 20px;
-  background-color: rgb(180, 233, 200);
+  background-color: #b4e9c8;
   display: flex;
   align-items: center;
   justify-content: space-between;
