@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { FormsModule } from '@angular/forms';
-import { UserApiService } from '../user-api.service';
 
 // ce bloc est comme la carte d'identé de mon composant y'a tt les infos
 @Component({
@@ -30,8 +29,6 @@ export class ConnexionComponent implements OnInit {
   constructor(
     // pour avoir accés a mon service 
     private auth: AuthService, 
-    // pour etre en contact avec mon backend
-    private api: UserApiService,
     private router: Router, 
     // pour lire les paramettre de l'URL
     private route: ActivatedRoute
@@ -64,37 +61,17 @@ export class ConnexionComponent implements OnInit {
       return;
     }
     // Appel a mon bakend genre  POST /api/auth/login
-    this.api.login(this.identifier, this.password).subscribe({
+    this.auth.login(this.identifier, this.password).subscribe({
 
       // en cas de succees
-      next: (resp: any) => {
+      next: () => {
         // je réintialise les messages d'erreur
         this.error = '';
         // ce message sera visible sous le titre
         this.success = 'Connexion réussie';
 
-        // (Plus tard) si le backend renvoie un JWT : localStorage.setItem('token', resp.token);
-
-          // 1) je récupérer le token 
-         const token: string | undefined = resp?.token;
-         // apres avoir recu le token
-         if (token) {
-         localStorage.setItem('token', token);            
-         }
-
-        // role retourné par le bakend
-        let effectiveRole: 'ADMIN' | 'USER' = this.role;
-        if (resp?.role === 'ADMIN' || resp?.role === 'USER'){
-          effectiveRole = resp.role;
-        }
-        // memorisation de l'utilisateur
-        const email = resp?.email ?? this.identifier;
-
-        // memorisation de la vue pour d'autres ecran 
-        localStorage.setItem('demoViewRole', effectiveRole);
-
-        // pour stoker l'objet genre mail, role pour que ton AuthService/RoleGuard puissent savoir "qui est connecté".
-        localStorage.setItem('currentUser', JSON.stringify({ email, role: effectiveRole }))
+        // on relit le rôle effectivement synchronisé par AuthService
+        const effectiveRole = this.auth.getUser()?.role ?? this.role;
 
         // redirection apres succès selon les roles
         
@@ -133,4 +110,3 @@ export class ConnexionComponent implements OnInit {
     }
    
   }
-
